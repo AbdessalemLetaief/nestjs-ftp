@@ -10,7 +10,7 @@
   },
   "main": "dist/index.js",
   "files": [
-    "dist/**/*",
+    "dist",
     "*.md"
   ],
   "scripts": {
