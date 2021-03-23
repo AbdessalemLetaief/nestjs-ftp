@@ -8,6 +8,11 @@
     "type": "git",
     "url": "https://github.com/AbdessalemLetaief/nestjs-ftp"
   },
+  "main": "dist/index.js",
+  "files": [
+    "dist/**/*",
+    "*.md"
+  ],
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "rimraf dist && tsc -p tsconfig.build.json",
