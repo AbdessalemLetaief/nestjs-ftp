@@ -1,10 +1,13 @@
 {
   "name": "nestjs-ftp",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "private": true,
-  "license": "UNLICENSED",
+  "description": "Nestjs-ftp is a NestJs Module repository of ftp package",
+  "author": "Abdessalem Letaief",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AbdessalemLetaief/nestjs-ftp"
+},
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
