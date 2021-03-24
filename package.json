@@ -1,7 +1,7 @@
 {
   "name": "nestjs-ftp",
   "version": "0.0.1",
-  "description": "Nestjs-ftp is a NestJs Module repository of ftp package",
+  "description": "Nestjs-ftp is a NestJs Module repository of basic-ftp package",
   "author": "Abdessalem Letaief",
   "license": "MIT",
   "repository": {
@@ -10,10 +10,22 @@
   },
   "main": "dist/index.js",
   "files": [
-    "dist",
+    "dist/**/*",
     "*.md"
   ],
-  "scripts": {
+  "keywords": [
+    "ftp",
+    "ftps",
+    "promise",
+    "async",
+    "await",
+    "tls",
+    "ipv6",
+    "typescript",
+    "NestJs"
+  ],
+  "homepage": "https://github.com/AbdessalemLetaief/nestjs-ftp#readme",
+    "scripts": {
     "prebuild": "rimraf dist",
     "build": "rimraf dist && tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -32,7 +44,7 @@
     "@nestjs/common": "^7.0.0",
     "@nestjs/core": "^7.6.13",
     "@nestjs/platform-express": "^7.6.13",
-    "ftp": "^0.3.10",
+    "basic-ftp": "^4.6.3",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.6"
