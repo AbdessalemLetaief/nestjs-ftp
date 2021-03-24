@@ -1,73 +1,91 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+<h1 align="center"></h1>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+<div align="center">
+  <a href="http://nestjs.com/" target="_blank">
+    <img src="https://nestjs.com/img/logo_text.svg" width="150" alt="Nest Logo" />
+  </a>
+</div>
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<h3 align="center">A NESTJS MODULE FOR FTP </h3>
 
-## Description
+<div align="center">
+  <a href="https://nestjs.com" target="_blank">
+    <img src="https://img.shields.io/badge/license-MIT-brightgreen.svg" alt="License" />
+    <img src="https://badge.fury.io/js/%40nestjsplus%2Fmassive.svg" alt="npm version" height="18">    <img src="https://img.shields.io/badge/built%20with-NestJs-red.svg" alt="Built with NestJS">
+  </a>
+</div>
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+### Installation
+##### Installation 
+> npm install nestjs-ftp
 
-## Installation
+### About nestjs-ftp
 
-```bash
-$ npm install
+This is an FTP client for NestJs, it supports FTPS over TLS, Passive Mode over IPv6, has a Promise-based API, and offers methods to operate on whole directories built on top of basic-ftp
+
+
+
+### Quick Start
+
+Nestjs-ftp is build using the NestJs Dynamic modules and Factory providers approach, to configure it import the `FtpModule` module and the `forRootFtpAsync` service.
+
+
+For example, your `AppModule` should look like this :
+
+```typescript
+
+import { Module } from '@nestjs/common';
+
+
+
+@Module({
+    imports: [
+        FtpModule.forRootFtpAsync({
+            useFactory : async ()=>{
+                return {
+                  host:"test.rebex.net",
+                  password:"password",
+                  port:21,
+                  user:"demo",
+                  secure:true
+                }
+            },
+            inject: [ConfigService]
+        })
+  controllers: [AppController],
+  providers: [AppService],
+  
+
+})
+export class AppModule { }
+```
+Then just inject the service just like any local service
+
+For Example:
+
+```typescript
+import { Injectable } from '@nestjs/common';
+import { FtpService } from 'nestjs-ftp';
+
+@Injectable()
+export class AppService {
+    constructor(private readonly _ftpService: FtpService){}
+
+    async uploadFile(): string {
+        try {
+            await this._ftpService.upload(source,destination)
+        } catch (error) {
+            throw new Error(error)
+        }
+    }
+}
+
 ```
 
-## Running the app
+### Author
 
-```bash
-# development
-$ npm run start
+**ABDESSALEM LETAIEF**
 
-# watch mode
-$ npm run start:dev
+### License
 
-# production mode
-$ npm run start:prod
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
+Licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
