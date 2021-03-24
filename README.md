@@ -16,7 +16,7 @@
 </div>
 
 ### Installation
-##### Installation missing dependencies (aws_sdk , nodeMailer)
+##### Installation 
 > npm install nestjs-ftp
 
 ### About nestjs-ftp
