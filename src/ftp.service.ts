@@ -1,8 +1,8 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
 import { CONFIG_CONNECTION_OPTIONS } from './constants';
-import { IConnectionOptions } from './interfaces/ftp.interface';
 import { Client, FileInfo, FTPResponse, UploadOptions } from 'basic-ftp';
 import { Readable, Writable } from 'stream';
+import { IConnectionOptions } from './interfaces/connection-options.interface';
 
 @Injectable()
 export class FtpService {
@@ -12,7 +12,6 @@ export class FtpService {
   ) {
     Logger.log('initialising FTP Module', 'FTP SERVICE');
     this._ftpClient = new Client();
-    this._ftpClient.ftp.verbose = true; //enable logging
   }
 
   /**

@@ -1,6 +1,6 @@
 {
   "name": "nestjs-ftp",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Nestjs-ftp is a NestJs Module repository of basic-ftp package",
   "author": "Abdessalem Letaief",
   "license": "MIT",
