@@ -75,4 +75,18 @@ export class FtpService {
     }
     this._ftpClient.close();
   }
+  /**
+   * delete a file in the ftp
+   * @param fileRemotePath path to the deleted file
+   * @returns
+   */
+  async delete(fileRemotePath: string): Promise<FTPResponse> {
+    try {
+      await this._ftpClient.access(this._options);
+      return await this._ftpClient.remove(fileRemotePath);
+    } catch (err) {
+      Logger.log(err);
+    }
+    this._ftpClient.close();
+  }
 }
