@@ -89,4 +89,18 @@ export class FtpService {
     }
     this._ftpClient.close();
   }
+  /**
+   * get file size
+   * @param fileRemotePath path to file
+   * @returns
+   */
+  async size(fileRemotePath: string): Promise<number> {
+    try {
+      await this._ftpClient.access(this._options);
+      return await this._ftpClient.size(fileRemotePath);
+    } catch (err) {
+      Logger.log(err);
+    }
+    this._ftpClient.close();
+  }
 }
