@@ -25,9 +25,11 @@ export class FtpService {
       await this._ftpClient.access(this._options);
       return await this._ftpClient.list(path);
     } catch (err) {
-      Logger.log(err);
+      this._ftpClient.close();
+      throw err;
+    } finally {
+      this._ftpClient.close();
     }
-    this._ftpClient.close();
   }
 
   /**
@@ -50,9 +52,11 @@ export class FtpService {
         startAt,
       );
     } catch (err) {
-      Logger.log(err);
+      this._ftpClient.close();
+      throw err;
+    } finally {
+      this._ftpClient.close();
     }
-    this._ftpClient.close();
   }
 
   /**
@@ -71,9 +75,11 @@ export class FtpService {
       await this._ftpClient.access(this._options);
       return await this._ftpClient.uploadFrom(source, toRemotePath, options);
     } catch (err) {
-      Logger.log(err);
+      this._ftpClient.close();
+      throw err;
+    } finally {
+      this._ftpClient.close();
     }
-    this._ftpClient.close();
   }
   /**
    * delete a file in the ftp
@@ -85,9 +91,11 @@ export class FtpService {
       await this._ftpClient.access(this._options);
       return await this._ftpClient.remove(fileRemotePath);
     } catch (err) {
-      Logger.log(err);
+      this._ftpClient.close();
+      throw err;
+    } finally {
+      this._ftpClient.close();
     }
-    this._ftpClient.close();
   }
   /**
    * get file size
@@ -99,8 +107,10 @@ export class FtpService {
       await this._ftpClient.access(this._options);
       return await this._ftpClient.size(fileRemotePath);
     } catch (err) {
-      Logger.log(err);
+      this._ftpClient.close();
+      throw err;
+    } finally {
+      this._ftpClient.close();
     }
-    this._ftpClient.close();
   }
 }
