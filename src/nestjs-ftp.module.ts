@@ -9,6 +9,7 @@ export class FtpModule {
   static forRootFtpAsync(options: IFtpConnectionOptions): DynamicModule {
     return {
         module: FtpModule,
+        imports: options.imports || [],
         providers: [
             {
                 provide: CONFIG_CONNECTION_OPTIONS,
