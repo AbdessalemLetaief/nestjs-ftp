@@ -6,7 +6,7 @@ import { IConnectionOptions } from './interfaces/connection-options.interface';
 
 @Injectable()
 export class FtpService {
-  private readonly _ftpClient: Client;
+  public readonly _ftpClient: Client;
   constructor(
     @Inject(CONFIG_CONNECTION_OPTIONS) private _options: IConnectionOptions,
   ) {
