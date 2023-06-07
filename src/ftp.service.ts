@@ -6,12 +6,17 @@ import { IConnectionOptions } from './interfaces/connection-options.interface';
 
 @Injectable()
 export class FtpService {
-  public readonly _ftpClient: Client;
+  private readonly _ftpClient: Client;
   constructor(
     @Inject(CONFIG_CONNECTION_OPTIONS) private _options: IConnectionOptions,
   ) {
     Logger.log('initialising FTP Module', 'FTP SERVICE');
     this._ftpClient = new Client();
+  }
+
+
+  get client(): Client {
+    return this._ftpClient;
   }
 
   /**
